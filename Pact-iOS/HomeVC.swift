@@ -28,8 +28,8 @@ class HomeVC: UIViewController {
     }
     
     @objc private func refreshOptions(sender: UIRefreshControl) {
-        totalPointsLabel.text = "10000"
         sender.endRefreshing()
+        totalPointsLabel.text = "10000"
     }
 
 
