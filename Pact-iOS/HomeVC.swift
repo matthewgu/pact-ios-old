@@ -43,6 +43,7 @@ class HomeVC: UIViewController {
         }
         
         //is it correct to performSegue to log the user out?
+        DataService().KeyChain.delete("uid")
         performSegue(withIdentifier: "RegistrationSegue", sender: nil)
     }
     

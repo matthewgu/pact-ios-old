@@ -15,6 +15,7 @@
 		811254F51E96E48100C8E0FA /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811254F41E96E48100C8E0FA /* RegistrationVC.swift */; };
 		811254F71E96E49B00C8E0FA /* EnableHealthKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811254F61E96E49B00C8E0FA /* EnableHealthKitVC.swift */; };
 		811254F91E96F89D00C8E0FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 811254F81E96F89D00C8E0FA /* GoogleService-Info.plist */; };
+		811254FB1E96FF3B00C8E0FA /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811254FA1E96FF3B00C8E0FA /* DataService.swift */; };
 		B8475B3BA8ACF4E0D23F473F /* Pods_Pact_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E89FE37FDBCDA01984CB17 /* Pods_Pact_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		811254F41E96E48100C8E0FA /* RegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
 		811254F61E96E49B00C8E0FA /* EnableHealthKitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableHealthKitVC.swift; sourceTree = "<group>"; };
 		811254F81E96F89D00C8E0FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		811254FA1E96FF3B00C8E0FA /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		9E1A12BA20F1627B69A77B8E /* Pods-Pact-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pact-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pact-iOS/Pods-Pact-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		D2E89FE37FDBCDA01984CB17 /* Pods_Pact_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pact_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -83,6 +85,7 @@
 		811254F11E96E13100C8E0FA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				811254FA1E96FF3B00C8E0FA /* DataService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 				811254E21E96E0F600C8E0FA /* HomeVC.swift in Sources */,
 				811254F51E96E48100C8E0FA /* RegistrationVC.swift in Sources */,
 				811254E01E96E0F600C8E0FA /* AppDelegate.swift in Sources */,
+				811254FB1E96FF3B00C8E0FA /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
