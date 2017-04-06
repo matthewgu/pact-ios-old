@@ -27,17 +27,28 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMc-wp-jfE">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDC-Y7-taW">
-                                                <rect key="frame" x="163" y="323" width="48" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dEf-fw-n1H">
+                                                <rect key="frame" x="139.5" y="303.5" width="96.5" height="60"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDC-Y7-taW">
+                                                        <rect key="frame" x="0.0" y="0.0" width="60.5" height="60"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZO-PK-BvG">
+                                                        <rect key="frame" x="65.5" y="26.5" width="31" height="26.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="0.55577166339999995" blue="0.44706282279999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstItem="pDC-Y7-taW" firstAttribute="centerY" secondItem="dMc-wp-jfE" secondAttribute="centerY" id="egM-Pa-7CV"/>
-                                            <constraint firstItem="pDC-Y7-taW" firstAttribute="centerX" secondItem="dMc-wp-jfE" secondAttribute="centerX" id="liE-in-K58"/>
+                                            <constraint firstItem="dEf-fw-n1H" firstAttribute="centerX" secondItem="dMc-wp-jfE" secondAttribute="centerX" id="Esv-cp-rpS"/>
+                                            <constraint firstItem="dEf-fw-n1H" firstAttribute="centerY" secondItem="dMc-wp-jfE" secondAttribute="centerY" id="fc9-aJ-Xxb"/>
                                         </constraints>
                                     </view>
                                 </subviews>
