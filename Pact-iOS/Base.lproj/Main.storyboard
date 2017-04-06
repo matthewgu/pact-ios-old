@@ -1,14 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4me-3W-1gR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--RegistrationVC-->
+        <scene sceneID="hwZ-E5-6qg">
+            <objects>
+                <viewController id="4me-3W-1gR" customClass="RegistrationVC" customModule="Pact_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z9s-Pi-HdH"/>
+                        <viewControllerLayoutGuide type="bottom" id="Uen-m1-f5X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qhH-tP-Txt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="u6g-34-f44">
+                                <rect key="frame" x="26" y="447" width="323" height="170"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f1E-Ec-HdB">
+                                        <rect key="frame" x="0.0" y="0.0" width="323" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="dry-iR-kbe"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MnD-nX-Kx8">
+                                        <rect key="frame" x="0.0" y="60" width="323" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="GMg-mt-oey"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tJ-b0-HJT">
+                                        <rect key="frame" x="0.0" y="120" width="323" height="50"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="904-LC-vkP"/>
+                                        </constraints>
+                                        <state key="normal" title="SIGN UP | SIGN IN"/>
+                                        <connections>
+                                            <action selector="signUpBtnPressed:" destination="4me-3W-1gR" eventType="touchUpInside" id="Hy0-cR-avM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="u6g-34-f44" secondAttribute="trailing" constant="10" id="1qE-xA-pig"/>
+                            <constraint firstItem="u6g-34-f44" firstAttribute="leading" secondItem="qhH-tP-Txt" secondAttribute="leadingMargin" constant="10" id="l1e-OJ-k99"/>
+                            <constraint firstItem="Uen-m1-f5X" firstAttribute="top" secondItem="u6g-34-f44" secondAttribute="bottom" constant="50" id="pK3-Gr-OmX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailField" destination="f1E-Ec-HdB" id="Moh-kS-fHB"/>
+                        <outlet property="passwordField" destination="MnD-nX-Kx8" id="ui7-yf-fkH"/>
+                        <segue destination="FXe-cH-gIp" kind="showDetail" identifier="HealthKitSegue" action="showViewController:sender:" id="evg-Mo-g6d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IgV-kC-rGh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1292" y="36"/>
+        </scene>
+        <!--Enable Health KitVC-->
+        <scene sceneID="YID-Y3-ZEd">
+            <objects>
+                <viewController id="FXe-cH-gIp" customClass="EnableHealthKitVC" customModule="Pact_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bKi-Vl-ODT"/>
+                        <viewControllerLayoutGuide type="bottom" id="0gS-Jv-srq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QQU-HZ-72t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xO8-7J-n17">
+                                <rect key="frame" x="26" y="567" width="323" height="50"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="94W-ls-GAH"/>
+                                </constraints>
+                                <state key="normal" title="ENABLE HEALTH KIT"/>
+                                <connections>
+                                    <action selector="enableHealthKitBtnPressed:" destination="FXe-cH-gIp" eventType="touchUpInside" id="jGE-1f-aU0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0gS-Jv-srq" firstAttribute="top" secondItem="xO8-7J-n17" secondAttribute="bottom" constant="50" id="0XU-ix-Axu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xO8-7J-n17" secondAttribute="trailing" constant="10" id="MaE-6N-BxR"/>
+                            <constraint firstItem="xO8-7J-n17" firstAttribute="leading" secondItem="QQU-HZ-72t" secondAttribute="leadingMargin" constant="10" id="vrq-6h-VDa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="HomeSegue" id="udc-iG-KZf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y44-6X-jLq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-516" y="36"/>
+        </scene>
         <!--HomeVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -78,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="24.800000000000001" y="36.431784107946029"/>
+            <point key="canvasLocation" x="214" y="36"/>
         </scene>
     </scenes>
 </document>

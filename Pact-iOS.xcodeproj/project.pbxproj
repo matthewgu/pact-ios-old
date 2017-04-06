@@ -12,6 +12,8 @@
 		811254E51E96E0F600C8E0FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 811254E31E96E0F600C8E0FA /* Main.storyboard */; };
 		811254E71E96E0F600C8E0FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 811254E61E96E0F600C8E0FA /* Assets.xcassets */; };
 		811254EA1E96E0F600C8E0FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 811254E81E96E0F600C8E0FA /* LaunchScreen.storyboard */; };
+		811254F51E96E48100C8E0FA /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811254F41E96E48100C8E0FA /* RegistrationVC.swift */; };
+		811254F71E96E49B00C8E0FA /* EnableHealthKitVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811254F61E96E49B00C8E0FA /* EnableHealthKitVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		811254E61E96E0F600C8E0FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		811254E91E96E0F600C8E0FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		811254EB1E96E0F600C8E0FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		811254F41E96E48100C8E0FA /* RegistrationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
+		811254F61E96E49B00C8E0FA /* EnableHealthKitVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnableHealthKitVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +80,6 @@
 		811254F21E96E13700C8E0FA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				811254E11E96E0F600C8E0FA /* HomeVC.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -84,6 +87,9 @@
 		811254F31E96E14400C8E0FA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				811254E11E96E0F600C8E0FA /* HomeVC.swift */,
+				811254F41E96E48100C8E0FA /* RegistrationVC.swift */,
+				811254F61E96E49B00C8E0FA /* EnableHealthKitVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -161,7 +167,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				811254F71E96E49B00C8E0FA /* EnableHealthKitVC.swift in Sources */,
 				811254E21E96E0F600C8E0FA /* HomeVC.swift in Sources */,
+				811254F51E96E48100C8E0FA /* RegistrationVC.swift in Sources */,
 				811254E01E96E0F600C8E0FA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
