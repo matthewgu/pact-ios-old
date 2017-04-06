@@ -148,10 +148,24 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1c-Z5-LTn">
+                                                <rect key="frame" x="10" y="567" width="355" height="50"/>
+                                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="nY5-nh-I0a"/>
+                                                </constraints>
+                                                <state key="normal" title="SIGN OUT"/>
+                                                <connections>
+                                                    <action selector="signOutBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kbV-Mi-h20"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="0.55577166339999995" blue="0.44706282279999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="f1c-Z5-LTn" secondAttribute="trailing" constant="10" id="6tS-Lf-kMo"/>
                                             <constraint firstItem="dEf-fw-n1H" firstAttribute="centerX" secondItem="dMc-wp-jfE" secondAttribute="centerX" id="Esv-cp-rpS"/>
+                                            <constraint firstItem="f1c-Z5-LTn" firstAttribute="leading" secondItem="dMc-wp-jfE" secondAttribute="leading" constant="10" id="GQ2-UI-7WZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="f1c-Z5-LTn" secondAttribute="bottom" constant="50" id="alg-h2-VIu"/>
                                             <constraint firstItem="dEf-fw-n1H" firstAttribute="centerY" secondItem="dMc-wp-jfE" secondAttribute="centerY" id="fc9-aJ-Xxb"/>
                                         </constraints>
                                     </view>
@@ -178,11 +192,12 @@
                     <connections>
                         <outlet property="scrollView" destination="2Rb-5u-moq" id="Roy-ba-voc"/>
                         <outlet property="totalPointsLabel" destination="pDC-Y7-taW" id="Xkv-RC-Fn9"/>
+                        <segue destination="4me-3W-1gR" kind="show" identifier="RegistrationSegue" id="WGE-Du-tMb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="214" y="36"/>
+            <point key="canvasLocation" x="231" y="36"/>
         </scene>
     </scenes>
 </document>

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import KeychainSwift
 
 
 class HomeVC: UIViewController {
@@ -32,6 +34,18 @@ class HomeVC: UIViewController {
         totalPointsLabel.text = "10000"
     }
 
+    @IBAction func signOutBtnPressed(_ sender: Any) {
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out:", signOutError)
+        }
+        
+        //is it correct to performSegue to log the user out?
+        performSegue(withIdentifier: "RegistrationSegue", sender: nil)
+    }
+    
+
 
 }
-

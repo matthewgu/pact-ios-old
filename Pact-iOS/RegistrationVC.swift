@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
+import KeychainSwift
 
 class RegistrationVC: UIViewController {
 
@@ -22,9 +25,27 @@ class RegistrationVC: UIViewController {
     }
 
     @IBAction func signUpBtnPressed(_ sender: Any) {
-        performSegue(withIdentifier: "HealthKitSegue", sender: nil)
+        if let email = emailField.text, let password = passwordField.text {
+            FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
+                if error == nil {
+                    print("you're logged in")
+                    self.emailField.text = ""
+                    self.passwordField.text = ""
+                    self.performSegue(withIdentifier: "HealthKitSegue", sender: nil)
+                } else {
+                    FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
+                        if error != nil {
+                            print(error as Any)
+                        } else {
+                            self.emailField.text = ""
+                            self.passwordField.text = ""
+                            print("you've created a new account")
+                            self.performSegue(withIdentifier: "HealthKitSegue", sender: nil)
+                        }
+                    }
+                }
+            }
+        }
     }
     
-    
-
 }
