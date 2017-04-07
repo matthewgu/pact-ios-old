@@ -39,6 +39,9 @@
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="4me-3W-1gR" id="dLR-rG-xEg"/>
+                                                        </connections>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MnD-nX-Kx8">
                                                         <rect key="frame" x="0.0" y="60" width="355" height="50"/>
@@ -48,6 +51,9 @@
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="4me-3W-1gR" id="ubR-LW-Wpk"/>
+                                                        </connections>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tJ-b0-HJT">
                                                         <rect key="frame" x="0.0" y="120" width="355" height="50"/>
@@ -92,6 +98,8 @@
                     <connections>
                         <outlet property="emailField" destination="f1E-Ec-HdB" id="Moh-kS-fHB"/>
                         <outlet property="passwordField" destination="MnD-nX-Kx8" id="ui7-yf-fkH"/>
+                        <outlet property="scrollView" destination="7xC-PK-438" id="bla-1A-hBp"/>
+                        <outlet property="signUpButton" destination="9tJ-b0-HJT" id="0yy-zr-z2R"/>
                         <segue destination="FXe-cH-gIp" kind="showDetail" identifier="HealthKitSegue" action="showViewController:sender:" id="evg-Mo-g6d"/>
                     </connections>
                 </viewController>

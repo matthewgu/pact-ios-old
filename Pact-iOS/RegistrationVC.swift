@@ -11,11 +11,12 @@ import Firebase
 import FirebaseDatabase
 import KeychainSwift
 
-class RegistrationVC: UIViewController {
+class RegistrationVC: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-    
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var signUpButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -35,6 +36,21 @@ class RegistrationVC: UIViewController {
         keyChain.set(id, forKey: "uid")
     }
     
+    //dismiss keyword when return button is pressed
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    //offsets input field when editing
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0, y: 250), animated: true)
+    }
+    
+    // returns input field to original position when done editing
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
+    }
     
     @IBAction func signUpBtnPressed(_ sender: Any) {
         if let email = emailField.text, let password = passwordField.text {
