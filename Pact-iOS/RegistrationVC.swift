@@ -16,7 +16,6 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var signUpButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -52,6 +51,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
         scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
     
+    // loging with firebase
     @IBAction func signUpBtnPressed(_ sender: Any) {
         if let email = emailField.text, let password = passwordField.text {
             FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
@@ -63,6 +63,8 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                     
                     self.performSegue(withIdentifier: "HealthKitSegue", sender: nil)
                 } else {
+                    
+                    //create new user with firebase
                     FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
                         if error != nil {
                             print(error as Any)

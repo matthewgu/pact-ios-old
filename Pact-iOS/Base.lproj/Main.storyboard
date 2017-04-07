@@ -99,7 +99,6 @@
                         <outlet property="emailField" destination="f1E-Ec-HdB" id="Moh-kS-fHB"/>
                         <outlet property="passwordField" destination="MnD-nX-Kx8" id="ui7-yf-fkH"/>
                         <outlet property="scrollView" destination="7xC-PK-438" id="bla-1A-hBp"/>
-                        <outlet property="signUpButton" destination="9tJ-b0-HJT" id="0yy-zr-z2R"/>
                         <segue destination="FXe-cH-gIp" kind="showDetail" identifier="HealthKitSegue" action="showViewController:sender:" id="evg-Mo-g6d"/>
                     </connections>
                 </viewController>
