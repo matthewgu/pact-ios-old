@@ -224,7 +224,6 @@
                     <connections>
                         <outlet property="scrollView" destination="2Rb-5u-moq" id="Roy-ba-voc"/>
                         <outlet property="totalPointsLabel" destination="pDC-Y7-taW" id="Xkv-RC-Fn9"/>
-                        <segue destination="4me-3W-1gR" kind="show" identifier="RegistrationSegue" id="WGE-Du-tMb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
