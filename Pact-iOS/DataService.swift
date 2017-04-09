@@ -13,14 +13,19 @@ import KeychainSwift
 
 let DB_BASE = FIRDatabase.database().reference()
 
-class DataService {
+class DataService
+{
     private var _keyChain = KeychainSwift()
     private var _refDatabase = DB_BASE
     
-    var KeyChain: KeychainSwift {
-        get {
+    var KeyChain: KeychainSwift
+    {
+        get
+        {
             return _keyChain
-        } set {
+        }
+        set
+        {
             _keyChain = newValue
         }
     }

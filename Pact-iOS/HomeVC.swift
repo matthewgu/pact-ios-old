@@ -33,18 +33,17 @@ class HomeVC: UIViewController {
         sender.endRefreshing()
         totalPointsLabel.text = "10000"
     }
-
+    
     @IBAction func signOutBtnPressed(_ sender: Any) {
         let firebaseAuth = FIRAuth.auth()
         do {
             try firebaseAuth?.signOut()
+            DataService().KeyChain.delete("uid")
+            // dimiss view & return to root
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         } catch let signOutError as NSError {
             print ("Error signing out:", signOutError)
         }
-        
-        //is it correct to performSegue to log the user out?
-        DataService().KeyChain.delete("uid")
-        performSegue(withIdentifier: "RegistrationSegue", sender: nil)
     }
     
 
