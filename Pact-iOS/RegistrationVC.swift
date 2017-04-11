@@ -26,15 +26,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
     override func viewDidAppear(_ animated: Bool) {
         let keyChain = DataService().KeyChain
         if keyChain.get("uid") != nil {
-            HealthKitUtil.sharedInstance.checkAuthorization { (authorized) in
-                if authorized {
-                    print("you are authroized")
-                } else {
-                    print("not authorized yet")
-                }
-            
-            }
-            //performSegue(withIdentifier: "HealthKitSegue", sender: nil)
+            performSegue(withIdentifier: "HealthKitSegue", sender: nil)
         }
     }
     

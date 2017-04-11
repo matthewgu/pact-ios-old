@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4me-3W-1gR">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,20 +19,20 @@
                         <viewControllerLayoutGuide type="bottom" id="Uen-m1-f5X"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qhH-tP-Txt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7xC-PK-438">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S5M-eT-MH2" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="u6g-34-f44">
-                                                <rect key="frame" x="10" y="447" width="355" height="170"/>
+                                                <rect key="frame" x="10" y="260" width="300" height="170"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f1E-Ec-HdB">
-                                                        <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="dry-iR-kbe"/>
                                                         </constraints>
@@ -44,7 +44,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MnD-nX-Kx8">
-                                                        <rect key="frame" x="0.0" y="60" width="355" height="50"/>
+                                                        <rect key="frame" x="0.0" y="60" width="300" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="GMg-mt-oey"/>
                                                         </constraints>
@@ -56,7 +56,7 @@
                                                         </connections>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9tJ-b0-HJT">
-                                                        <rect key="frame" x="0.0" y="120" width="355" height="50"/>
+                                                        <rect key="frame" x="0.0" y="120" width="300" height="50"/>
                                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="904-LC-vkP"/>
@@ -115,11 +115,11 @@
                         <viewControllerLayoutGuide type="bottom" id="0gS-Jv-srq"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QQU-HZ-72t">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xO8-7J-n17">
-                                <rect key="frame" x="26" y="567" width="323" height="50"/>
+                                <rect key="frame" x="26" y="380" width="268" height="50"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="94W-ls-GAH"/>
@@ -154,17 +154,17 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Rb-5u-moq">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMc-wp-jfE" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dEf-fw-n1H">
-                                                <rect key="frame" x="139.5" y="303.5" width="96.5" height="60"/>
+                                                <rect key="frame" x="112.5" y="50" width="96.5" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDC-Y7-taW">
                                                         <rect key="frame" x="0.0" y="0.0" width="60.5" height="60"/>
@@ -181,10 +181,9 @@
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f1c-Z5-LTn">
-                                                <rect key="frame" x="10" y="567" width="355" height="50"/>
-                                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <rect key="frame" x="110" y="430" width="100" height="30"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="nY5-nh-I0a"/>
+                                                    <constraint firstAttribute="width" constant="100" id="ReP-3B-ZOv"/>
                                                 </constraints>
                                                 <state key="normal" title="SIGN OUT"/>
                                                 <connections>
@@ -194,11 +193,10 @@
                                         </subviews>
                                         <color key="backgroundColor" red="1" green="0.55577166339999995" blue="0.44706282279999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="f1c-Z5-LTn" secondAttribute="trailing" constant="10" id="6tS-Lf-kMo"/>
                                             <constraint firstItem="dEf-fw-n1H" firstAttribute="centerX" secondItem="dMc-wp-jfE" secondAttribute="centerX" id="Esv-cp-rpS"/>
-                                            <constraint firstItem="f1c-Z5-LTn" firstAttribute="leading" secondItem="dMc-wp-jfE" secondAttribute="leading" constant="10" id="GQ2-UI-7WZ"/>
-                                            <constraint firstAttribute="bottom" secondItem="f1c-Z5-LTn" secondAttribute="bottom" constant="50" id="alg-h2-VIu"/>
-                                            <constraint firstItem="dEf-fw-n1H" firstAttribute="centerY" secondItem="dMc-wp-jfE" secondAttribute="centerY" id="fc9-aJ-Xxb"/>
+                                            <constraint firstAttribute="bottom" secondItem="f1c-Z5-LTn" secondAttribute="bottom" constant="20" id="alg-h2-VIu"/>
+                                            <constraint firstItem="f1c-Z5-LTn" firstAttribute="centerX" secondItem="dMc-wp-jfE" secondAttribute="centerX" id="w6b-IS-bpe"/>
+                                            <constraint firstItem="dEf-fw-n1H" firstAttribute="top" secondItem="dMc-wp-jfE" secondAttribute="top" constant="50" id="wYj-ST-yLO"/>
                                         </constraints>
                                     </view>
                                 </subviews>

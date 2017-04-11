@@ -27,6 +27,11 @@ class HomeVC: UIViewController {
                                  for: .valueChanged)
         scrollView.refreshControl = refreshControl
         
+        if let project = UINib(nibName: "Project", bundle: nil).instantiate(withOwner: self, options: nil).first as? ProjectView {
+            
+            project.center = self.view.center
+            self.view.addSubview(project)
+        }
     }
     
     @objc private func refreshOptions(sender: UIRefreshControl) {
