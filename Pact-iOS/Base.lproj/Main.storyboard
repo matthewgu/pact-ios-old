@@ -164,7 +164,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dEf-fw-n1H">
-                                                <rect key="frame" x="112.5" y="50" width="96.5" height="60"/>
+                                                <rect key="frame" x="112.5" y="100" width="96.5" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDC-Y7-taW">
                                                         <rect key="frame" x="0.0" y="0.0" width="60.5" height="60"/>
@@ -196,7 +196,7 @@
                                             <constraint firstItem="dEf-fw-n1H" firstAttribute="centerX" secondItem="dMc-wp-jfE" secondAttribute="centerX" id="Esv-cp-rpS"/>
                                             <constraint firstAttribute="bottom" secondItem="f1c-Z5-LTn" secondAttribute="bottom" constant="30" id="gue-aV-Hkl"/>
                                             <constraint firstItem="f1c-Z5-LTn" firstAttribute="centerX" secondItem="dMc-wp-jfE" secondAttribute="centerX" id="w6b-IS-bpe"/>
-                                            <constraint firstItem="dEf-fw-n1H" firstAttribute="top" secondItem="dMc-wp-jfE" secondAttribute="top" constant="50" id="wYj-ST-yLO"/>
+                                            <constraint firstItem="dEf-fw-n1H" firstAttribute="top" secondItem="dMc-wp-jfE" secondAttribute="top" constant="100" id="wYj-ST-yLO"/>
                                         </constraints>
                                     </view>
                                 </subviews>

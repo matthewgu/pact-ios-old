@@ -29,19 +29,18 @@ class HomeVC: UIViewController {
                                  for: .valueChanged)
         scrollView.refreshControl = refreshControl
         
+        // // MARK: - Project View
         if let project = UINib(nibName: "Project", bundle: nil).instantiate(withOwner: self, options: nil).first as? ProjectView {
             
             project.translatesAutoresizingMaskIntoConstraints = false
+            self.scrollView.addSubview(project)
+
+            let leadingConstraint = project.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15)
+            let trailingConstraint = project.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -15)
+            let heightConstraint = project.heightAnchor.constraint(equalToConstant: 380)
+            let bottomConstraint = project.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -70)
             
-            self.view.addSubview(project)
-            //project.center = self.view.center
-            
-            let leadingConstraint = project.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
-            let trailingConstraint = project.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
-            let topConstraint = project.topAnchor.constraint(equalTo: self.view.topAnchor)
-            let bottomConstraint = project.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50)
-            
-            initialConstraints.append(contentsOf: [leadingConstraint,trailingConstraint,topConstraint,bottomConstraint])
+            initialConstraints.append(contentsOf: [leadingConstraint,trailingConstraint,heightConstraint,bottomConstraint])
             
             NSLayoutConstraint.activate(initialConstraints)
             
