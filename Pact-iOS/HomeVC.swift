@@ -35,9 +35,10 @@ class HomeVC: UIViewController {
             project.translatesAutoresizingMaskIntoConstraints = false
             self.scrollView.addSubview(project)
 
+            // add constraints for smaller devices
             let leadingConstraint = project.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15)
             let trailingConstraint = project.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -15)
-            let heightConstraint = project.heightAnchor.constraint(equalToConstant: 380)
+            let heightConstraint = project.heightAnchor.constraint(equalToConstant: projectHeightConstraintConstant())
             let bottomConstraint = project.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -70)
             
             initialConstraints.append(contentsOf: [leadingConstraint,trailingConstraint,heightConstraint,bottomConstraint])
@@ -50,6 +51,16 @@ class HomeVC: UIViewController {
     @objc private func refreshOptions(sender: UIRefreshControl) {
         sender.endRefreshing()
         totalPointsLabel.text = "10000"
+    }
+    
+    // Return height constraint for Project View based on device screen height
+    func projectHeightConstraintConstant() -> CGFloat {
+        switch(UIScreen.main.fixedCoordinateSpace.bounds.height) {
+        case 568:
+            return 300
+        default:
+            return 380
+        }
     }
     
     @IBAction func signOutBtnPressed(_ sender: Any) {
