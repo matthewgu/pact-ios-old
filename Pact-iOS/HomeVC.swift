@@ -16,6 +16,8 @@ class HomeVC: UIViewController {
     @IBOutlet weak var totalPointsLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    var initialConstraints = [NSLayoutConstraint]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,8 +31,20 @@ class HomeVC: UIViewController {
         
         if let project = UINib(nibName: "Project", bundle: nil).instantiate(withOwner: self, options: nil).first as? ProjectView {
             
-            project.center = self.view.center
+            project.translatesAutoresizingMaskIntoConstraints = false
+            
             self.view.addSubview(project)
+            //project.center = self.view.center
+            
+            let leadingConstraint = project.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
+            let trailingConstraint = project.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+            let topConstraint = project.topAnchor.constraint(equalTo: self.view.topAnchor)
+            let bottomConstraint = project.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50)
+            
+            initialConstraints.append(contentsOf: [leadingConstraint,trailingConstraint,topConstraint,bottomConstraint])
+            
+            NSLayoutConstraint.activate(initialConstraints)
+            
         }
     }
     
