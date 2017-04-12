@@ -83,7 +83,5 @@ class HomeVC: UIViewController {
             print ("Error signing out:", signOutError)
         }
     }
-    
-
 
 }
