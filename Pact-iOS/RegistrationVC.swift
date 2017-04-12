@@ -16,10 +16,13 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
-    
+    @IBOutlet weak var signUpButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.signUpButton.layer.cornerRadius = 6
+        self.signUpButton.layer.masksToBounds = true
 
     }
 

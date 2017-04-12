@@ -9,5 +9,8 @@
 import UIKit
 
 class ProjectView: UIView {
+    @IBOutlet weak var contributeButton: UIButton!
+    
+    
     
 }

@@ -35,6 +35,12 @@ class HomeVC: UIViewController {
             project.translatesAutoresizingMaskIntoConstraints = false
             self.scrollView.addSubview(project)
 
+            project.layer.cornerRadius = 6
+            project.layer.masksToBounds = true
+            
+            project.contributeButton.layer.cornerRadius = 6
+            //project.contributeButton.clipsToBounds = true
+
             // view constraint
             let leadingConstraint = project.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15)
             let trailingConstraint = project.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -15)
@@ -61,7 +67,7 @@ class HomeVC: UIViewController {
         case 568:
             return 300
         default:
-            return 360
+            return 340
         }
     }
     
