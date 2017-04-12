@@ -35,7 +35,7 @@ class HomeVC: UIViewController {
             project.translatesAutoresizingMaskIntoConstraints = false
             self.scrollView.addSubview(project)
 
-            // add constraints for smaller devices
+            // view constraint
             let leadingConstraint = project.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15)
             let trailingConstraint = project.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -15)
             let heightConstraint = project.heightAnchor.constraint(equalToConstant: projectHeightConstraintConstant())
@@ -46,6 +46,7 @@ class HomeVC: UIViewController {
             NSLayoutConstraint.activate(initialConstraints)
             
         }
+        
     }
     
     // // MARK: - Pull to Refresh Action
@@ -54,7 +55,7 @@ class HomeVC: UIViewController {
         totalPointsLabel.text = "10000"
     }
     
-    // Return height constraint for Project View based on device screen height
+    //   Project View Height constraint based on device screen height
     func projectHeightConstraintConstant() -> CGFloat {
         switch(UIScreen.main.fixedCoordinateSpace.bounds.height) {
         case 568:
@@ -64,6 +65,7 @@ class HomeVC: UIViewController {
         }
     }
     
+    // // MARK: - Sign Out Button Pressed
     @IBAction func signOutBtnPressed(_ sender: Any) {
         let firebaseAuth = FIRAuth.auth()
         do {
