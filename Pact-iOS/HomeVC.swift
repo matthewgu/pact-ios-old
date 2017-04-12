@@ -29,7 +29,7 @@ class HomeVC: UIViewController {
                                  for: .valueChanged)
         scrollView.refreshControl = refreshControl
         
-        // // MARK: - Project View
+        //// MARK: - Add Project View
         if let project = UINib(nibName: "Project", bundle: nil).instantiate(withOwner: self, options: nil).first as? ProjectView {
             
             project.translatesAutoresizingMaskIntoConstraints = false
@@ -48,6 +48,7 @@ class HomeVC: UIViewController {
         }
     }
     
+    // // MARK: - Pull to Refresh Action
     @objc private func refreshOptions(sender: UIRefreshControl) {
         sender.endRefreshing()
         totalPointsLabel.text = "10000"
@@ -59,7 +60,7 @@ class HomeVC: UIViewController {
         case 568:
             return 300
         default:
-            return 380
+            return 360
         }
     }
     
