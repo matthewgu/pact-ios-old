@@ -21,7 +21,7 @@
 		81789F651E9AF762006E0748 /* UserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81789F641E9AF762006E0748 /* UserAccount.swift */; };
 		81789F671E9AF7A4006E0748 /* HealthKitUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81789F661E9AF7A4006E0748 /* HealthKitUtil.swift */; };
 		818EA21D1E9D7A30008C0F85 /* Project.xib in Resources */ = {isa = PBXBuildFile; fileRef = 818EA21C1E9D7A30008C0F85 /* Project.xib */; };
-		818EA21F1E9D7A60008C0F85 /* FeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818EA21E1E9D7A60008C0F85 /* FeatureView.swift */; };
+		818EA21F1E9D7A60008C0F85 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818EA21E1E9D7A60008C0F85 /* ProjectView.swift */; };
 		B8475B3BA8ACF4E0D23F473F /* Pods_Pact_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2E89FE37FDBCDA01984CB17 /* Pods_Pact_iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,7 +44,7 @@
 		81789F641E9AF762006E0748 /* UserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccount.swift; sourceTree = "<group>"; };
 		81789F661E9AF7A4006E0748 /* HealthKitUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthKitUtil.swift; sourceTree = "<group>"; };
 		818EA21C1E9D7A30008C0F85 /* Project.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Project.xib; sourceTree = "<group>"; };
-		818EA21E1E9D7A60008C0F85 /* FeatureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureView.swift; sourceTree = "<group>"; };
+		818EA21E1E9D7A60008C0F85 /* ProjectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		9E1A12BA20F1627B69A77B8E /* Pods-Pact-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pact-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Pact-iOS/Pods-Pact-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		D2E89FE37FDBCDA01984CB17 /* Pods_Pact_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pact_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -104,7 +104,7 @@
 		811254F21E96E13700C8E0FA /* View */ = {
 			isa = PBXGroup;
 			children = (
-				818EA21E1E9D7A60008C0F85 /* FeatureView.swift */,
+				818EA21E1E9D7A60008C0F85 /* ProjectView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -290,7 +290,7 @@
 				811254F51E96E48100C8E0FA /* RegistrationVC.swift in Sources */,
 				811254E01E96E0F600C8E0FA /* AppDelegate.swift in Sources */,
 				811254FB1E96FF3B00C8E0FA /* DataService.swift in Sources */,
-				818EA21F1E9D7A60008C0F85 /* FeatureView.swift in Sources */,
+				818EA21F1E9D7A60008C0F85 /* ProjectView.swift in Sources */,
 				81789F631E9AF74A006E0748 /* StorageUtil.swift in Sources */,
 				81789F651E9AF762006E0748 /* UserAccount.swift in Sources */,
 			);

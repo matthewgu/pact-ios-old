@@ -18,6 +18,9 @@ class HomeVC: UIViewController {
     
     var initialConstraints = [NSLayoutConstraint]()
     
+    var ref: FIRDatabaseReference!
+    var refHandle: UInt!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,6 +55,25 @@ class HomeVC: UIViewController {
             NSLayoutConstraint.activate(initialConstraints)
             
         }
+        
+        ref = FIRDatabase.database().reference()
+        refHandle = ref.observe(FIRDataEventType.value, with: { (snapshot) in
+            if let dataDict = snapshot.value as? [String: AnyObject] {
+                print(dataDict)
+            }
+        })
+        
+        // pulling Project data from Firebase
+        ref.child("Projects").child("GG7XGW4E").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snapshotValue = snapshot.value as? NSDictionary {
+                if let name = snapshotValue["Title"] as? String {
+                    print(name)
+                }
+                if let points = snapshotValue["Points"] as? Int {
+                    print(points)
+                }
+            }
+        })
         
     }
     
