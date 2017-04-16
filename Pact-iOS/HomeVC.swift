@@ -103,16 +103,24 @@ class HomeVC: UIViewController {
     }
     
     func addPoints() {
+        var currentPoints = Int()
+        
+        if let currentPointsOptional = Int(totalPointsLabel.text!) {
+            currentPoints = currentPointsOptional
+        }
+        
+        let currentPointsStr = "\(currentPoints + 1)"
+        print(currentPointsStr)
+        
         ref = FIRDatabase.database().reference()
-        self.ref.child("users/\(uid!)/points").setValue("100")
-        //("users").child(uid!).setValue(["points": "100"])
-        print("add points")
+        self.ref.child("users/\(uid!)/points").setValue(currentPointsStr)
     }
     
     // // MARK: - Pull to Refresh Action
     @objc private func refreshOptions(sender: UIRefreshControl) {
         sender.endRefreshing()
         addPoints()
+        fetchPoints()
         //totalPointsLabel.text = "10000"
     }
     
