@@ -64,7 +64,7 @@ class HomeVC: UIViewController {
         fetchProject()
     }
         
-
+    // MARK: - FETCH PROJECT
     func fetchProject() {
         
         FIRDatabase.database().reference().child("users").child(uid!).child("projects").observe(.childAdded, with: { (snapshot) in
@@ -96,7 +96,7 @@ class HomeVC: UIViewController {
         FIRDatabase.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                self.totalPointsLabel.text = dictionary["points"] as? String
+                self.totalPointsLabel.text = dictionary["points"] as? String ?? ""
             }
             
         }, withCancel: nil)
@@ -105,7 +105,7 @@ class HomeVC: UIViewController {
     func addPoints() {
         var currentPoints = Int()
         
-        if let currentPointsOptional = Int(totalPointsLabel.text!) {
+        if let currentPointsOptional = Int(totalPointsLabel.text ?? "0") {
             currentPoints = currentPointsOptional
         }
         
