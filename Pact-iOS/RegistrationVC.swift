@@ -79,10 +79,11 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                                 return
                             }
                             
-                            //successfully authenticated user
+                            // saving user data to firebase db
                             self.ref = FIRDatabase.database().reference()
                             let userReference = self.ref?.child("users:").child(uid)
-                            let values = ["name": "Matt", "email": email ]
+                            let projects = [["title": "send a ball", "pointsNeeded": "1000"], ["title": "send a ball", "pointsNeeded": "1000"]]
+                            let values = ["name": "Matt", "email": email, "points": "0", "projects": projects ] as [String : Any]
                             userReference?.updateChildValues(values, withCompletionBlock: { (err, ref) in
                                 if err != nil {
                                     print(err as Any)
