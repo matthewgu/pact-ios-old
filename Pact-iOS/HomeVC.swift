@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import KeychainSwift
-
+import FirebaseAuth
 
 class HomeVC: UIViewController {
     
@@ -19,7 +19,7 @@ class HomeVC: UIViewController {
     var initialConstraints = [NSLayoutConstraint]()
     
     var ref: FIRDatabaseReference!
-    var refHandle: UInt!
+    let uid = FIRAuth.auth()?.currentUser?.uid
     
     var projects = [Project]()
     
@@ -63,7 +63,6 @@ class HomeVC: UIViewController {
         
 
     func fetchProject() {
-        let uid = FIRAuth.auth()?.currentUser?.uid
         
         FIRDatabase.database().reference().child("users").child(uid!).child("projects").observe(.childAdded, with: { (snapshot) in
 
@@ -90,9 +89,17 @@ class HomeVC: UIViewController {
         
     }
     
+    func addPoints() {
+        ref = FIRDatabase.database().reference()
+        self.ref.child("users/\(uid!)/points").setValue("100")
+        //("users").child(uid!).setValue(["points": "100"])
+        print("add points")
+    }
+    
     // // MARK: - Pull to Refresh Action
     @objc private func refreshOptions(sender: UIRefreshControl) {
         sender.endRefreshing()
+        addPoints()
         totalPointsLabel.text = "10000"
     }
     
