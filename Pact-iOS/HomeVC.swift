@@ -82,7 +82,10 @@ class HomeVC: UIViewController {
                 let project = Project(title: title!, pointsNeeded: pointsNeeded!)
                 
                 self.projects.append(project)
-                print(self.projects[0].pointsNeeded!)
+                
+                DispatchQueue.main.async {
+                    // reload project view
+                }
             }
             
         }, withCancel: nil)
