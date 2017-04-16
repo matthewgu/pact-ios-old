@@ -12,7 +12,7 @@ import KeychainSwift
 
 
 class HomeVC: UIViewController {
-
+    
     @IBOutlet weak var totalPointsLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -20,6 +20,8 @@ class HomeVC: UIViewController {
     
     var ref: FIRDatabaseReference!
     var refHandle: UInt!
+    
+    var projects = [Project]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,11 +55,41 @@ class HomeVC: UIViewController {
             initialConstraints.append(contentsOf: [leadingConstraint,trailingConstraint,heightConstraint,bottomConstraint])
             
             NSLayoutConstraint.activate(initialConstraints)
-            
         }
+        
+        // fetch user project data
+        fetchProject()
     }
         
 
+    func fetchProject() {
+        let uid = FIRAuth.auth()?.currentUser?.uid
+        
+        FIRDatabase.database().reference().child("users").child(uid!).child("projects").observe(.childAdded, with: { (snapshot) in
+
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                let project = Project()
+                
+                // If you use this setter, your class properties must match up with the firebase dictionary keys
+                //user.setValuesForKeys(dictionary)
+                
+                project.title = dictionary["title"] as? String
+                project.pointsNeeded = dictionary["pointsNeeded"] as? String
+                
+                //print(user.name!, user.email!)
+                
+                print(project.title!, project.pointsNeeded!)
+                self.projects.append(project)
+                
+//                DispatchQueue.main.async {
+//                    print(self.projects)
+//                }
+            }
+            
+        }, withCancel: nil)
+        
+    }
+    
     // // MARK: - Pull to Refresh Action
     @objc private func refreshOptions(sender: UIRefreshControl) {
         sender.endRefreshing()
