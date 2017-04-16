@@ -13,6 +13,8 @@ import KeychainSwift
 
 class RegistrationVC: UIViewController, UITextFieldDelegate {
 
+    var ref: FIRDatabaseReference?
+    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -72,10 +74,27 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                         if error != nil {
                             print(error as Any)
                         } else {
+                            
+                            guard let uid = user?.uid else {
+                                return
+                            }
+                            
+                            //successfully authenticated user
+                            self.ref = FIRDatabase.database().reference()
+                            let userReference = self.ref?.child("users:").child(uid)
+                            let values = ["name": "Matt", "email": email ]
+                            userReference?.updateChildValues(values, withCompletionBlock: { (err, ref) in
+                                if err != nil {
+                                    print(err as Any)
+                                    return
+                                }
+                                self.dismiss(animated: true, completion: nil)
+                                self.emailField.text = ""
+                                self.passwordField.text = ""
+                                print("User successfully saved into Firebase DB")
+                            })
+                            
                             self.completeSignIn(id: user!.uid)
-                            self.emailField.text = ""
-                            self.passwordField.text = ""
-                            print("you've created a new account")
                             
                             self.performSegue(withIdentifier: "HealthKitSegue", sender: nil)
                         }
