@@ -165,16 +165,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dEf-fw-n1H">
-                                                <rect key="frame" x="140" y="100" width="96.5" height="60"/>
+                                                <rect key="frame" x="149" y="100" width="79" height="60"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDC-Y7-taW">
-                                                        <rect key="frame" x="0.0" y="0.0" width="60.5" height="60"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDC-Y7-taW">
+                                                        <rect key="frame" x="0.0" y="0.0" width="43" height="60"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZO-PK-BvG">
-                                                        <rect key="frame" x="65.5" y="26.5" width="31" height="26.5"/>
+                                                        <rect key="frame" x="48" y="26.5" width="31" height="26.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>

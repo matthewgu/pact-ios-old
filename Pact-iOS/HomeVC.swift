@@ -57,6 +57,9 @@ class HomeVC: UIViewController {
             NSLayoutConstraint.activate(initialConstraints)
         }
         
+        // fetch user current points
+        fetchPoints()
+        
         // fetch user project data
         fetchProject()
     }
@@ -89,6 +92,16 @@ class HomeVC: UIViewController {
         
     }
     
+    func fetchPoints() {
+        FIRDatabase.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                self.totalPointsLabel.text = dictionary["points"] as? String
+            }
+            
+        }, withCancel: nil)
+    }
+    
     func addPoints() {
         ref = FIRDatabase.database().reference()
         self.ref.child("users/\(uid!)/points").setValue("100")
@@ -100,7 +113,7 @@ class HomeVC: UIViewController {
     @objc private func refreshOptions(sender: UIRefreshControl) {
         sender.endRefreshing()
         addPoints()
-        totalPointsLabel.text = "10000"
+        //totalPointsLabel.text = "10000"
     }
     
     //   Project View Height constraint based on device screen height
