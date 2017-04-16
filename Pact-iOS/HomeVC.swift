@@ -55,34 +55,9 @@ class HomeVC: UIViewController {
             NSLayoutConstraint.activate(initialConstraints)
             
         }
-        
-//        ref = FIRDatabase.database().reference()
-//        refHandle = ref.observe(FIRDataEventType.value, with: { (snapshot) in
-//            if let dataDict = snapshot.value as? [String: AnyObject] {
-//                print(dataDict)
-//            }
-//        })
-        
-        ref.child("Projects").observeSingleEvent(of: .value, with: { (snapshot) in
-            if let snapshotValue = snapshot.value as? [String: AnyObject] {
-                print(snapshotValue["GG7XGW4E"]!)
-            }
-        })
-//
-//        // pulling GG7XGW4E Project data from Firebase
-//        ref.child("Projects").child("GG7XGW4E").observeSingleEvent(of: .value, with: { (snapshot) in
-//            if let snapshotValue = snapshot.value as? NSDictionary {
-//                if let name = snapshotValue["Title"] as? String {
-//                    print(name)
-//                }
-//                if let points = snapshotValue["Points"] as? Int {
-//                    print(points)
-//                }
-//            }
-//        })
-        
     }
-    
+        
+
     // // MARK: - Pull to Refresh Action
     @objc private func refreshOptions(sender: UIRefreshControl) {
         sender.endRefreshing()
