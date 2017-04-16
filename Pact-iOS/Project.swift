@@ -8,9 +8,14 @@
 
 import UIKit
 
-class Project: NSObject {
+class Project {
     
     var title: String?
     var pointsNeeded: String?
+    
+    init(title: String, pointsNeeded: String) {
+        self.title = title
+        self.pointsNeeded = pointsNeeded
+    }
 }
 

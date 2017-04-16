@@ -23,6 +23,7 @@ class HomeVC: UIViewController {
     
     var projects = [Project]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,26 +71,21 @@ class HomeVC: UIViewController {
         FIRDatabase.database().reference().child("users").child(uid!).child("projects").observe(.childAdded, with: { (snapshot) in
 
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                let project = Project()
+                //let project = Project()
                 
                 // If you use this setter, your class properties must match up with the firebase dictionary keys
-                //user.setValuesForKeys(dictionary)
+                //project.setValuesForKeys(dictionary)
                 
-                project.title = dictionary["title"] as? String
-                project.pointsNeeded = dictionary["pointsNeeded"] as? String
+                let title = dictionary["title"] as? String
+                let pointsNeeded = dictionary["pointsNeeded"] as? String
                 
-                //print(user.name!, user.email!)
+                let project = Project(title: title!, pointsNeeded: pointsNeeded!)
                 
-                print(project.title!, project.pointsNeeded!)
                 self.projects.append(project)
-                
-//                DispatchQueue.main.async {
-//                    print(self.projects)
-//                }
+                print(self.projects[0].pointsNeeded!)
             }
             
         }, withCancel: nil)
-        
     }
     
     func fetchPoints() {
