@@ -16,8 +16,6 @@ class HomeVC: UIViewController {
     @IBOutlet weak var totalPointsLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    var initialConstraints = [NSLayoutConstraint]()
-    
     var ref: FIRDatabaseReference!
     let uid = FIRAuth.auth()?.currentUser?.uid
     
@@ -36,7 +34,7 @@ class HomeVC: UIViewController {
         scrollView.refreshControl = refreshControl
         
         // add view
-        addView()
+        //addView()
         
         // fetch user current points
         fetchPoints()
@@ -53,6 +51,7 @@ class HomeVC: UIViewController {
             project.translatesAutoresizingMaskIntoConstraints = false
             self.scrollView.addSubview(project)
             
+            project.pointsLabel.text = self.projects[0].pointsNeeded
             project.layer.cornerRadius = 6
             project.layer.masksToBounds = true
             
@@ -60,14 +59,11 @@ class HomeVC: UIViewController {
             //project.contributeButton.clipsToBounds = true
             
             // view constraint
-            let leadingConstraint = project.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15)
-            let trailingConstraint = project.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -15)
-            let heightConstraint = project.heightAnchor.constraint(equalToConstant: projectHeightConstraintConstant())
-            let bottomConstraint = project.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -70)
+            project.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15).isActive = true
+            project.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -15).isActive = true
+            project.heightAnchor.constraint(equalToConstant: projectHeightConstraintConstant()).isActive = true
+            project.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -70).isActive = true
             
-            initialConstraints.append(contentsOf: [leadingConstraint,trailingConstraint,heightConstraint,bottomConstraint])
-            
-            NSLayoutConstraint.activate(initialConstraints)
         }
     }
     
@@ -75,9 +71,8 @@ class HomeVC: UIViewController {
     func fetchProject() {
         
         FIRDatabase.database().reference().child("users").child(uid!).child("projects").observe(.childAdded, with: { (snapshot) in
-
+            
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                //let project = Project()
                 
                 // If you use this setter, your class properties must match up with the firebase dictionary keys
                 //project.setValuesForKeys(dictionary)
@@ -90,11 +85,13 @@ class HomeVC: UIViewController {
                 self.projects.append(project)
                 
                 DispatchQueue.main.async {
-                    // reload project view
+                    print(self.projects.count)
+                    self.addView()
                 }
+                
             }
-            
         }, withCancel: nil)
+        
     }
     
     func fetchPoints() {
