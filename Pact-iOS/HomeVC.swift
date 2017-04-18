@@ -40,7 +40,10 @@ class HomeVC: UIViewController {
         fetchPoints()
         
         // fetch user project data
-        fetchProject()
+        fetchProject { (true) in
+            print(self.projects.count)
+            self.addView()
+        }
     }
     
     
@@ -51,7 +54,7 @@ class HomeVC: UIViewController {
             project.translatesAutoresizingMaskIntoConstraints = false
             self.scrollView.addSubview(project)
             
-            project.pointsLabel.text = self.projects[0].pointsNeeded! + " pts"
+            project.pointsLabel.text = self.projects[1].pointsNeeded! + " pts"
             project.layer.cornerRadius = 6
             project.layer.masksToBounds = true
             
@@ -66,28 +69,49 @@ class HomeVC: UIViewController {
             
         }
     }
+
     
-    // fetch project
-    func fetchProject() {
-        FIRDatabase.database().reference().child("users").child(uid!).child("projects").observe(.value, with: { (snapshot) in
-            //print(snapshot.children.allObjects)
+    // fetch project - single event
+    func fetchProject(completion: @escaping (Bool) -> ()) {
+        FIRDatabase.database().reference().child("users").child(uid!).child("projects").observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snapshot {
                     if let dict = snap.value as? [String: Any] {
                         if let title = dict["title"] as? String, let pointsNeeded = dict["pointsNeeded"] as? String {
-                            //print(title, pointsNeeded)
-                            
+        
                             let project = Project(title: title, pointsNeeded: pointsNeeded)
-                            
                             self.projects.append(project)
                         }
                     }
                 }
             }
+            completion(true)
         })
     }
     
+    
+    // fetch project
+//    func fetchProject() {
+//        FIRDatabase.database().reference().child("users").child(uid!).child("projects").observe(.value, with: { (snapshot) in
+//            //print(snapshot.children.allObjects)
+//            
+//            if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
+//                for snap in snapshot {
+//                    if let dict = snap.value as? [String: Any] {
+//                        if let title = dict["title"] as? String, let pointsNeeded = dict["pointsNeeded"] as? String {
+//                            //print(title, pointsNeeded)
+//                            
+//                            let project = Project(title: title, pointsNeeded: pointsNeeded)
+//                            
+//                            self.projects.append(project)
+//                        }
+//                    }
+//                }
+//            }
+//        })
+//    }
+//    
     // fetch Project
 //    func fetchProject() {
 //        
