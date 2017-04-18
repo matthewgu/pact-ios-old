@@ -89,7 +89,7 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                                     return
                                 }
                                 let projectNameID = "sendBall"
-                                let projectDetail = ["nameID": projectNameID, "title": "send a ball", "pointsNeeded": "1000"]
+                                let projectDetail = ["projectNameID": projectNameID, "title": "send a ball", "pointsNeeded": "1000"]
                                 let values = [projectNameID: projectDetail]
                                 userReference?.child("projects").updateChildValues(values, withCompletionBlock: { (err, ref) in
                                     if err != nil {

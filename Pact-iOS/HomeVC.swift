@@ -55,6 +55,8 @@ class HomeVC: UIViewController {
             self.scrollView.addSubview(project)
             
             project.pointsLabel.text = self.projects[0].pointsNeeded! + " pts"
+            //let projectNameID = self.projects[0].
+            print(projects[0].projectNameID!)
             project.layer.cornerRadius = 6
             project.layer.masksToBounds = true
             
@@ -67,13 +69,14 @@ class HomeVC: UIViewController {
             project.heightAnchor.constraint(equalToConstant: projectHeightConstraintConstant()).isActive = true
             project.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -70).isActive = true
             
+            project.contributeButton.accessibilityHint = ""
             project.contributeButton.addTarget(self, action: #selector(HomeVC.contributeBtnPressed(sender:)), for: .touchUpInside)
         }
     }
 
     // contribute button pressed
     func contributeBtnPressed(sender: UIButton) {
-        print("contributed")
+        print(sender.accessibilityHint!)
     }
     
     // fetch project - single event
@@ -83,9 +86,9 @@ class HomeVC: UIViewController {
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snapshot {
                     if let dict = snap.value as? [String: Any] {
-                        if let title = dict["title"] as? String, let pointsNeeded = dict["pointsNeeded"] as? String {
+                        if let title = dict["title"] as? String, let pointsNeeded = dict["pointsNeeded"] as? String, let projectNameID = dict["projectNameID"] as? String {
         
-                            let project = Project(title: title, pointsNeeded: pointsNeeded)
+                            let project = Project(title: title, pointsNeeded: pointsNeeded, projectNameID: projectNameID)
                             self.projects.append(project)
                         }
                     }
