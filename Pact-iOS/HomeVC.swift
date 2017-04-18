@@ -51,6 +51,7 @@ class HomeVC: UIViewController {
     func addView() {
         if let project = UINib(nibName: "Project", bundle: nil).instantiate(withOwner: self, options: nil).first as? ProjectView {
             
+            let projectIndex = 0
             project.translatesAutoresizingMaskIntoConstraints = false
             self.scrollView.addSubview(project)
             
@@ -69,14 +70,16 @@ class HomeVC: UIViewController {
             project.heightAnchor.constraint(equalToConstant: projectHeightConstraintConstant()).isActive = true
             project.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -70).isActive = true
             
-            project.contributeButton.accessibilityHint = self.projects[0].projectNameID
+            project.contributeButton.tag = projectIndex
             project.contributeButton.addTarget(self, action: #selector(HomeVC.contributeBtnPressed(sender:)), for: .touchUpInside)
         }
     }
 
     // contribute button pressed
     func contributeBtnPressed(sender: UIButton) {
-        print(sender.accessibilityHint!)
+        let projectIndex = sender.tag
+        print(projects[projectIndex].pointsNeeded!)
+        print(projects[projectIndex].projectNameID!)
     }
     
     // fetch project - single event
