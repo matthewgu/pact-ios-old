@@ -69,7 +69,7 @@ class HomeVC: UIViewController {
             project.heightAnchor.constraint(equalToConstant: projectHeightConstraintConstant()).isActive = true
             project.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -70).isActive = true
             
-            project.contributeButton.accessibilityHint = ""
+            project.contributeButton.accessibilityHint = self.projects[0].projectNameID
             project.contributeButton.addTarget(self, action: #selector(HomeVC.contributeBtnPressed(sender:)), for: .touchUpInside)
         }
     }
