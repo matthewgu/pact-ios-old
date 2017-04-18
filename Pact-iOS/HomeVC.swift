@@ -67,9 +67,14 @@ class HomeVC: UIViewController {
             project.heightAnchor.constraint(equalToConstant: projectHeightConstraintConstant()).isActive = true
             project.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -70).isActive = true
             
+            project.contributeButton.addTarget(self, action: #selector(HomeVC.contributeBtnPressed(sender:)), for: .touchUpInside)
         }
     }
 
+    // contribute button pressed
+    func contributeBtnPressed(sender: UIButton) {
+        print("contributed")
+    }
     
     // fetch project - single event
     func fetchProject(completion: @escaping (Bool) -> ()) {

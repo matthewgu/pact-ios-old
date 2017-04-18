@@ -11,7 +11,6 @@ import UIKit
 class ProjectView: UIView {
     @IBOutlet weak var contributeButton: UIButton!
     @IBOutlet weak var pointsLabel: UILabel!
-    
-    
+
     
 }
