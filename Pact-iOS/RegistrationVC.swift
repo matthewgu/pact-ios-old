@@ -88,9 +88,9 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                                     print(err as Any)
                                     return
                                 }
-                                let projectsName = "sendBall"
-                                let projectDetail = ["name": projectsName, "title": "send a ball", "pointsNeeded": "1000"]
-                                let values = [projectsName: projectDetail]
+                                let projectNameID = "sendBall"
+                                let projectDetail = ["nameID": projectNameID, "title": "send a ball", "pointsNeeded": "1000"]
+                                let values = [projectNameID: projectDetail]
                                 userReference?.child("projects").updateChildValues(values, withCompletionBlock: { (err, ref) in
                                     if err != nil {
                                         print(err as Any)
