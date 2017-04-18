@@ -54,7 +54,7 @@ class HomeVC: UIViewController {
             project.translatesAutoresizingMaskIntoConstraints = false
             self.scrollView.addSubview(project)
             
-            project.pointsLabel.text = self.projects[1].pointsNeeded! + " pts"
+            project.pointsLabel.text = self.projects[0].pointsNeeded! + " pts"
             project.layer.cornerRadius = 6
             project.layer.masksToBounds = true
             

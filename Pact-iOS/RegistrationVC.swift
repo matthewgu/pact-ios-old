@@ -82,17 +82,25 @@ class RegistrationVC: UIViewController, UITextFieldDelegate {
                             // saving user data to firebase db
                             self.ref = FIRDatabase.database().reference()
                             let userReference = self.ref?.child("users").child(uid)
-                            let projects = [["title": "send a ball", "pointsNeeded": "1000"], ["title": "send a ball", "pointsNeeded": "2000"]]
-                            let values = ["name": "Matt", "email": email, "points": "0", "projects": projects ] as [String : Any]
+                            let values = ["name": "Matt", "email": email, "points": "0"] as [String : Any]
                             userReference?.updateChildValues(values, withCompletionBlock: { (err, ref) in
                                 if err != nil {
                                     print(err as Any)
                                     return
                                 }
-                                self.dismiss(animated: true, completion: nil)
-                                self.emailField.text = ""
-                                self.passwordField.text = ""
-                                print("User successfully saved into Firebase DB")
+                                let projectsName = "sendBall"
+                                let projectDetail = ["name": projectsName, "title": "send a ball", "pointsNeeded": "1000"]
+                                let values = [projectsName: projectDetail]
+                                userReference?.child("projects").updateChildValues(values, withCompletionBlock: { (err, ref) in
+                                    if err != nil {
+                                        print(err as Any)
+                                        return
+                                    }
+                                    self.dismiss(animated: true, completion: nil)
+                                    self.emailField.text = ""
+                                    self.passwordField.text = ""
+                                    print("User successfully saved into Firebase DB")
+                                })
                             })
                             
                             self.completeSignIn(id: user!.uid)
