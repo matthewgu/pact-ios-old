@@ -67,32 +67,53 @@ class HomeVC: UIViewController {
         }
     }
     
-    // fetch Project
+    // fetch project
     func fetchProject() {
-        
-        FIRDatabase.database().reference().child("users").child(uid!).child("projects").observe(.childAdded, with: { (snapshot) in
+        FIRDatabase.database().reference().child("users").child(uid!).child("projects").observe(.value, with: { (snapshot) in
+            //print(snapshot.children.allObjects)
             
-            if let dictionary = snapshot.value as? [String: AnyObject] {
-                
-                // If you use this setter, your class properties must match up with the firebase dictionary keys
-                //project.setValuesForKeys(dictionary)
-                
-                let title = dictionary["title"] as? String
-                let pointsNeeded = dictionary["pointsNeeded"] as? String
-                
-                let project = Project(title: title!, pointsNeeded: pointsNeeded!)
-                
-                self.projects.append(project)
-                
-                DispatchQueue.main.async {
-                    print(self.projects.count)
-                    self.addView()
+            if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                for snap in snapshot {
+                    if let dict = snap.value as? [String: Any] {
+                        if let title = dict["title"] as? String, let pointsNeeded = dict["pointsNeeded"] as? String {
+                            //print(title, pointsNeeded)
+                            
+                            let project = Project(title: title, pointsNeeded: pointsNeeded)
+                            
+                            self.projects.append(project)
+                        }
+                    }
                 }
-                
             }
-        }, withCancel: nil)
-        
+        })
     }
+    
+    // fetch Project
+//    func fetchProject() {
+//        
+//        FIRDatabase.database().reference().child("users").child(uid!).child("projects").observe(.childAdded, with: { (snapshot) in
+//            
+//            if let dictionary = snapshot.value as? [String: AnyObject] {
+//                
+//                // If you use this setter, your class properties must match up with the firebase dictionary keys
+//                //project.setValuesForKeys(dictionary)
+//                
+//                let title = dictionary["title"] as? String
+//                let pointsNeeded = dictionary["pointsNeeded"] as? String
+//                
+//                let project = Project(title: title!, pointsNeeded: pointsNeeded!)
+//                
+//                self.projects.append(project)
+//                
+//                DispatchQueue.main.async {
+//                    print(self.projects.count)
+//                    self.addView()
+//                }
+//                
+//            }
+//        }, withCancel: nil)
+//        
+//    }
     
     func fetchPoints() {
         FIRDatabase.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
