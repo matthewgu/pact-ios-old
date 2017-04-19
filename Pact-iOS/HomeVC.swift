@@ -80,17 +80,18 @@ class HomeVC: UIViewController {
         var pointsNeeded = Int()
         let projectIndex = sender.tag
         var projectContributeCount = Int()
+        var projectNameID = String()
 
-        if let currentPointsOptional = Int(totalPointsLabel.text ?? "0"), let pointsNeededOptional = Int(projects[projectIndex].pointsNeeded ?? "0"), let projectContributeCountOptional = Int(projects[projectIndex].projectContributeCount ?? "0") {
+        if let currentPointsOptional = Int(totalPointsLabel.text ?? "0"), let pointsNeededOptional = Int(projects[projectIndex].pointsNeeded ?? "0"), let projectContributeCountOptional = Int(projects[projectIndex].projectContributeCount ?? "0"), let projectNameIDOptional = String(projects[projectIndex].projectNameID ?? "name") {
             currentPoints = currentPointsOptional
             pointsNeeded = pointsNeededOptional
             projectContributeCount = projectContributeCountOptional
+            projectNameID = projectNameIDOptional
         }
         
         print(currentPoints, pointsNeeded, projectContributeCount)
         
         if currentPoints >= pointsNeeded {
-            let projectNameID = projects[projectIndex].projectNameID
             let newPoints = currentPoints - pointsNeeded
             projectContributeCount = projectContributeCount + 1
             
@@ -98,10 +99,11 @@ class HomeVC: UIViewController {
             let newPointsString = "\(newPoints)"
             
             ref = FIRDatabase.database().reference()
-            self.ref.child("users/\(uid!)/projects/\(projectNameID!)/projectContributeCount/").setValue(projectContributeCountString)
+            self.ref.child("users/\(uid!)/projects/\(projectNameID)/projectContributeCount/").setValue(projectContributeCountString)
             self.ref.child("users/\(uid!)/points").setValue(newPointsString)
             
             print("project count + 1")
+            projectContriuteCount(projectNameID: projectNameID, projectIndex: projectIndex)
             fetchPoints()
             
         } else {
@@ -188,7 +190,17 @@ class HomeVC: UIViewController {
         FIRDatabase.database().reference().child("users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                self.totalPointsLabel.text = dictionary["points"] as? String ?? ""
+                self.totalPointsLabel.text = dictionary["points"] as? String
+            }
+            
+        }, withCancel: nil)
+    }
+    
+    func projectContriuteCount(projectNameID: String, projectIndex: Int) {
+        FIRDatabase.database().reference().child("users").child(uid!).child("projects").child(projectNameID).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                self.projects[projectIndex].projectContributeCount = dictionary["projectContributeCount"] as? String
             }
             
         }, withCancel: nil)
