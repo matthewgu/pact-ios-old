@@ -83,19 +83,20 @@ class HomeVC: UIViewController {
         let projectIndex = sender.tag
         var projectContributeCount = Int()
         var projectNameID = String()
-
-        fetchProjectContriuteCount(projectNameID: projectNameID, projectIndex: projectIndex)
         
-        if let currentPointsOptional = Int(totalPointsLabel.text ?? "0"), let pointsNeededOptional = Int(projects[projectIndex].pointsNeeded ?? "0"), let projectContributeCountOptional = Int(projects[projectIndex].projectContributeCount ?? "0"), let projectNameIDOptional = String(projects[projectIndex].projectNameID ?? "name") {
+        if let currentPointsOptional = Int(totalPointsLabel.text ?? "0"), let pointsNeededOptional = Int(projects[projectIndex].pointsNeeded ?? "0"), let projectNameIDOptional = String(projects[projectIndex].projectNameID ?? "name") {
             currentPoints = currentPointsOptional
             pointsNeeded = pointsNeededOptional
-            projectContributeCount = projectContributeCountOptional
             projectNameID = projectNameIDOptional
         }
         
-        print(currentPoints, pointsNeeded, projectContributeCount)
-        
         if currentPoints >= pointsNeeded {
+            fetchProjectContriuteCount(projectNameID: projectNameID, projectIndex: projectIndex)
+            
+            if let projectContributeCountOptional = Int(projects[projectIndex].projectContributeCount ?? "0") {
+                projectContributeCount = projectContributeCountOptional
+            }
+            
             let newPoints = currentPoints - pointsNeeded
             projectContributeCount = projectContributeCount + 1
             
