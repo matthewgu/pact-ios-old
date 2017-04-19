@@ -79,20 +79,30 @@ class HomeVC: UIViewController {
         var currentPoints = Int()
         var pointsNeeded = Int()
         let projectIndex = sender.tag
-        let currentPointsStr = "1"
-        
-        if let currentPointsOptional = Int(totalPointsLabel.text ?? "0"), let pointsNeededOptional = Int(projects[projectIndex].pointsNeeded ?? "0") {
+        var projectContributeCount = Int()
+
+        if let currentPointsOptional = Int(totalPointsLabel.text ?? "0"), let pointsNeededOptional = Int(projects[projectIndex].pointsNeeded ?? "0"), let projectContributeCountOptional = Int(projects[projectIndex].projectContributeCount ?? "0") {
             currentPoints = currentPointsOptional
             pointsNeeded = pointsNeededOptional
+            projectContributeCount = projectContributeCountOptional
         }
         
-        print(currentPoints, pointsNeeded)
+        print(currentPoints, pointsNeeded, projectContributeCount)
         
-        if currentPoints > pointsNeeded {
+        if currentPoints >= pointsNeeded {
             let projectNameID = projects[projectIndex].projectNameID
-            print("you have enough points")
+            let newPoints = currentPoints - pointsNeeded
+            projectContributeCount = projectContributeCount + 1
+            
+            let projectContributeCountString = "\(projectContributeCount)"
+            let newPointsString = "\(newPoints)"
+            
             ref = FIRDatabase.database().reference()
-            self.ref.child("users/\(uid!)/projects/\(projectNameID!)/projectContributeCount/").setValue(currentPointsStr)
+            self.ref.child("users/\(uid!)/projects/\(projectNameID!)/projectContributeCount/").setValue(projectContributeCountString)
+            self.ref.child("users/\(uid!)/points").setValue(newPointsString)
+            
+            print("project count + 1")
+            fetchPoints()
             
         } else {
             // Not enough points alert
