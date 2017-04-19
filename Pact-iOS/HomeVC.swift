@@ -80,6 +80,12 @@ class HomeVC: UIViewController {
         let projectIndex = sender.tag
         print(projects[projectIndex].pointsNeeded!)
         print(projects[projectIndex].projectNameID!)
+        
+        // Not enough points alert
+        let alert = UIAlertController(title: "Not Enough Points", message: "Try Again", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     // fetch project - single event
