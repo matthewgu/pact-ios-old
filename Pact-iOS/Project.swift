@@ -13,11 +13,13 @@ class Project {
     var title: String?
     var pointsNeeded: String?
     var projectNameID: String?
+    var projectContributeCount: String?
     
-    init(title: String, pointsNeeded: String, projectNameID: String) {
+    init(title: String, pointsNeeded: String, projectNameID: String, projectContributeCount: String) {
         self.title = title
         self.pointsNeeded = pointsNeeded
         self.projectNameID = projectNameID
+        self.projectContributeCount = projectContributeCount
     }
 }
 

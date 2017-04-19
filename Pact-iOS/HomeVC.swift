@@ -21,7 +21,6 @@ class HomeVC: UIViewController {
     
     var projects = [Project]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,14 +76,32 @@ class HomeVC: UIViewController {
 
     // contribute button pressed
     func contributeBtnPressed(sender: UIButton) {
+        var currentPoints = Int()
+        var pointsNeeded = Int()
         let projectIndex = sender.tag
-        print(projects[projectIndex].pointsNeeded!)
-        print(projects[projectIndex].projectNameID!)
+        let currentPointsStr = "1"
         
-        // Not enough points alert
-        let alert = UIAlertController(title: "Not Enough Points", message: "Try Again", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        if let currentPointsOptional = Int(totalPointsLabel.text ?? "0"), let pointsNeededOptional = Int(projects[projectIndex].pointsNeeded ?? "0") {
+            currentPoints = currentPointsOptional
+            pointsNeeded = pointsNeededOptional
+        }
+        
+        print(currentPoints, pointsNeeded)
+        
+        if currentPoints > pointsNeeded {
+            let projectNameID = projects[projectIndex].projectNameID
+            print("you have enough points")
+            ref = FIRDatabase.database().reference()
+            self.ref.child("users/\(uid!)/projects/\(projectNameID!)/projectContributeCount/").setValue(currentPointsStr)
+            
+        } else {
+            // Not enough points alert
+            let alert = UIAlertController(title: "Not Enough Points", message: "Try Again", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+
+
         
     }
     
@@ -95,9 +112,9 @@ class HomeVC: UIViewController {
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snapshot {
                     if let dict = snap.value as? [String: Any] {
-                        if let title = dict["title"] as? String, let pointsNeeded = dict["pointsNeeded"] as? String, let projectNameID = dict["projectNameID"] as? String {
+                        if let title = dict["title"] as? String, let pointsNeeded = dict["pointsNeeded"] as? String, let projectNameID = dict["projectNameID"] as? String, let projectContributeCount = dict["projectContributeCount"] as? String {
         
-                            let project = Project(title: title, pointsNeeded: pointsNeeded, projectNameID: projectNameID)
+                            let project = Project(title: title, pointsNeeded: pointsNeeded, projectNameID: projectNameID, projectContributeCount: projectContributeCount)
                             self.projects.append(project)
                         }
                     }
@@ -173,7 +190,7 @@ class HomeVC: UIViewController {
             currentPoints = currentPointsOptional
         }
         
-        let currentPointsStr = "\(currentPoints + 1)"
+        let currentPointsStr = "\(currentPoints + 1000)"
         print(currentPointsStr)
         
         ref = FIRDatabase.database().reference()
