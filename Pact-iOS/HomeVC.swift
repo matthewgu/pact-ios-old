@@ -115,6 +115,7 @@ class HomeVC: UIViewController {
                         if let title = dict["title"] as? String, let pointsNeeded = dict["pointsNeeded"] as? String, let projectNameID = dict["projectNameID"] as? String, let projectContributeCount = dict["projectContributeCount"] as? String {
         
                             let project = Project(title: title, pointsNeeded: pointsNeeded, projectNameID: projectNameID, projectContributeCount: projectContributeCount)
+                            print("points contribtue count: \(project.projectContributeCount!)")
                             self.projects.append(project)
                         }
                     }
