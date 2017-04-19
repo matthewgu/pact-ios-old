@@ -102,8 +102,8 @@ class HomeVC: UIViewController {
             self.ref.child("users/\(uid!)/projects/\(projectNameID)/projectContributeCount/").setValue(projectContributeCountString)
             self.ref.child("users/\(uid!)/points").setValue(newPointsString)
             
-            print("project count + 1")
-            projectContriuteCount(projectNameID: projectNameID, projectIndex: projectIndex)
+            //fetch new points
+            fetchProjectContriuteCount(projectNameID: projectNameID, projectIndex: projectIndex)
             fetchPoints()
             
         } else {
@@ -114,7 +114,7 @@ class HomeVC: UIViewController {
         }
 
 
-        
+
     }
     
     // fetch project - single event
@@ -196,7 +196,7 @@ class HomeVC: UIViewController {
         }, withCancel: nil)
     }
     
-    func projectContriuteCount(projectNameID: String, projectIndex: Int) {
+    func fetchProjectContriuteCount(projectNameID: String, projectIndex: Int) {
         FIRDatabase.database().reference().child("users").child(uid!).child("projects").child(projectNameID).observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
