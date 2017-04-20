@@ -15,6 +15,8 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var totalPointsLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
+    let scrlv = UIScrollView()
+    
     let pageControl = UIPageControl()
     
     var ref: FIRDatabaseReference!
@@ -51,7 +53,6 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
     private func initViews()
     {
         // Scroll View
-        let scrlv = UIScrollView()
         scrlv.frame = CGRect(x: 0, y: view.frame.size.height - 380 - 64, width:  self.view.frame.size.width, height: CGFloat(380))
         scrlv.bounces = true
         scrlv.isPagingEnabled = true
@@ -60,7 +61,7 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
         self.scrollView.addSubview(scrlv)
         
         var x = 0 as CGFloat
-        for i in 0..<5
+        for _ in 0..<5
         {
             // Base View
             let v = UIView()
@@ -75,6 +76,15 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
 //            lb.textAlignment = .center
 //            lb.font = UIFont.boldSystemFont(ofSize: 25)
 //            v.addSubview(lb)
+            
+            // Project View
+            if let project = UINib(nibName: "Project", bundle: nil).instantiate(withOwner: self, options: nil).first as? ProjectView {
+                project.layer.cornerRadius = 6
+                project.layer.masksToBounds = true
+                project.frame = v.bounds
+                project.heightAnchor.constraint(equalToConstant: 200).isActive = true
+                v.addSubview(project)
+            }
             
             // Adjust size
             x = v.frame.maxX
@@ -110,11 +120,11 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
     func addView() {
         if let project = UINib(nibName: "Project", bundle: nil).instantiate(withOwner: self, options: nil).first as? ProjectView {
             
-            let projectIndex = 0
+            //let projectIndex = 0
             project.translatesAutoresizingMaskIntoConstraints = false
             self.scrollView.addSubview(project)
             
-            project.pointsLabel.text = self.projects[0].pointsNeeded! + " pts"
+            //project.pointsLabel.text = self.projects[0].pointsNeeded! + " pts"
             //let projectNameID = self.projects[0].
             print(projects[0].projectNameID!)
             project.layer.cornerRadius = 6
@@ -124,13 +134,13 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
             //project.contributeButton.clipsToBounds = true
             
             // view constraint
-            project.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 15).isActive = true
-            project.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -15).isActive = true
+            project.leadingAnchor.constraint(equalTo: scrlv.leadingAnchor, constant: 15).isActive = true
+            project.trailingAnchor.constraint(equalTo: scrlv.trailingAnchor, constant: -15).isActive = true
             project.heightAnchor.constraint(equalToConstant: projectHeightConstraintConstant()).isActive = true
-            project.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -70).isActive = true
+            project.bottomAnchor.constraint(equalTo: scrlv.bottomAnchor, constant: -70).isActive = true
             
-            project.contributeButton.tag = projectIndex
-            project.contributeButton.addTarget(self, action: #selector(HomeVC.contributeBtnPressed(sender:)), for: .touchUpInside)
+            //project.contributeButton.tag = projectIndex
+            //project.contributeButton.addTarget(self, action: #selector(HomeVC.contributeBtnPressed(sender:)), for: .touchUpInside)
         }
     }
 
