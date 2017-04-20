@@ -53,11 +53,12 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
     private func initViews()
     {
         // Scroll View
-        scrlv.frame = CGRect(x: 25, y: view.frame.size.height - 380 - 64, width:  self.view.frame.size.width - 50, height: CGFloat(380))
+        scrlv.frame = CGRect(x: 15, y: view.frame.size.height - 380 - 64, width:  self.view.frame.size.width - 30, height: CGFloat(380))
         scrlv.bounces = true
         scrlv.isPagingEnabled = true
         scrlv.isScrollEnabled = true
         scrlv.delegate = self
+        scrlv.clipsToBounds = false
         self.scrollView.addSubview(scrlv)
         
         var x = 0 as CGFloat
@@ -70,14 +71,14 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
             scrlv.addSubview(v)
             
             // Project View
-//            if let project = UINib(nibName: "Project", bundle: nil).instantiate(withOwner: self, options: nil).first as? ProjectView {
-//                
-//                project.contributeButton.layer.cornerRadius = 6
-//                project.contributeButton.backgroundColor = UIColor.brown
-//                v.addSubview(project)
-//                
-//                project.frame = CGRect(x: (v.frame.size.width/2)-150, y: (v.frame.size.height/2)-150, width: 300, height: 300)
-//            }
+            if let project = UINib(nibName: "Project", bundle: nil).instantiate(withOwner: self, options: nil).first as? ProjectView {
+                
+                project.contributeButton.layer.cornerRadius = 6
+                project.contributeButton.backgroundColor = UIColor.brown
+                v.addSubview(project)
+                
+                project.frame = CGRect(x: 10, y: 10, width: (v.frame.size.width) - 20, height: (v.frame.size.width) - 20)
+            }
             
             // Adjust size
             x = v.frame.maxX
