@@ -76,14 +76,17 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
 //            lb.textAlignment = .center
 //            lb.font = UIFont.boldSystemFont(ofSize: 25)
 //            v.addSubview(lb)
+        
             
             // Project View
             if let project = UINib(nibName: "Project", bundle: nil).instantiate(withOwner: self, options: nil).first as? ProjectView {
-                project.layer.cornerRadius = 6
-                project.layer.masksToBounds = true
-                project.frame = v.bounds
-                project.heightAnchor.constraint(equalToConstant: 200).isActive = true
+                
+                //var newX: CGFloat = 0.0
+                //newX = view.frame.midX + view.frame.size.width * CGFloat(x)
                 v.addSubview(project)
+                
+                project.frame = CGRect(x: (v.frame.size.width/2)-150, y: (v.frame.size.height/2)-150, width: 300, height: 300)
+
             }
             
             // Adjust size
