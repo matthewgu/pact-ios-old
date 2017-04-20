@@ -81,12 +81,11 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
             // Project View
             if let project = UINib(nibName: "Project", bundle: nil).instantiate(withOwner: self, options: nil).first as? ProjectView {
                 
-                //var newX: CGFloat = 0.0
-                //newX = view.frame.midX + view.frame.size.width * CGFloat(x)
+                project.contributeButton.layer.cornerRadius = 6
+                project.contributeButton.backgroundColor = UIColor.brown
                 v.addSubview(project)
                 
                 project.frame = CGRect(x: (v.frame.size.width/2)-150, y: (v.frame.size.height/2)-150, width: 300, height: 300)
-
             }
             
             // Adjust size
