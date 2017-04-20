@@ -23,6 +23,9 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
     let uid = FIRAuth.auth()?.currentUser?.uid
     
     var projects = [Project]()
+    let MAX_PAGE = 4
+    let MIN_PAGE = 0
+    var currentPage = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +59,7 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
         scrlv.frame = CGRect(x: 15, y: view.frame.size.height - 380 - 64, width:  self.view.frame.size.width - 30, height: CGFloat(380))
         scrlv.bounces = true
         scrlv.isPagingEnabled = true
-        scrlv.isScrollEnabled = true
+        scrlv.isScrollEnabled = false
         scrlv.delegate = self
         scrlv.clipsToBounds = false
         self.scrollView.addSubview(scrlv)
@@ -84,22 +87,25 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
             x = v.frame.maxX
             scrlv.contentSize.width = x
         }
-        
-        // PageControl
-        pageControl.frame = CGRect(x: 0, y: self.view.frame.size.height - 50, width: self.view.frame.size.width, height: 50)
-        pageControl.numberOfPages = 5
-        pageControl.currentPage = 0
-        self.view.addSubview(pageControl)
     }
     
-    // MARK: UIScrollViewDelegate
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
-    {
-        if fmod(scrollView.contentOffset.x, scrollView.frame.maxX) == 0
-        {
-            pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
+    @IBAction func detectSwipe (_ sender: UISwipeGestureRecognizer) {
+        if (currentPage < MAX_PAGE && sender.direction == UISwipeGestureRecognizerDirection.left) {
+            moveScrollView(direction: 1)
+            
+        }
+        
+        if (currentPage > MIN_PAGE && sender.direction == UISwipeGestureRecognizerDirection.right) {
+            moveScrollView(direction: -1)
         }
     }
+    
+    func moveScrollView(direction: Int){
+        currentPage = currentPage + direction
+        let point: CGPoint = CGPoint(x: scrlv.frame.size.width * CGFloat(currentPage), y: 0.0)
+        scrlv.setContentOffset(point, animated: true)
+    }
+    
     
     // MARK: - Support
     func getRandomColor() -> UIColor
