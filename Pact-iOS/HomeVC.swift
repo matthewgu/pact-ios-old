@@ -52,7 +52,7 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
     {
         // Scroll View
         let scrlv = UIScrollView()
-        scrlv.frame = CGRect(x: 0, y: view.frame.size.height - 300, width:  self.view.frame.size.width, height: CGFloat(300))
+        scrlv.frame = CGRect(x: 0, y: view.frame.size.height - 380 - 64, width:  self.view.frame.size.width, height: CGFloat(380))
         scrlv.bounces = true
         scrlv.isPagingEnabled = true
         scrlv.isScrollEnabled = true
@@ -65,16 +65,16 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
             // Base View
             let v = UIView()
             v.backgroundColor = getRandomColor()
-            v.frame = CGRect(x: x, y: 0, width: self.view.frame.size.width, height: CGFloat(300))
+            v.frame = CGRect(x: x, y: 0, width: self.view.frame.size.width, height: CGFloat(380))
             scrlv.addSubview(v)
             
             // Number label
-            let lb = UILabel()
-            lb.frame = v.bounds
-            lb.text = "\(i + 1)"
-            lb.textAlignment = .center
-            lb.font = UIFont.boldSystemFont(ofSize: 25)
-            v.addSubview(lb)
+//            let lb = UILabel()
+//            lb.frame = v.bounds
+//            lb.text = "\(i + 1)"
+//            lb.textAlignment = .center
+//            lb.font = UIFont.boldSystemFont(ofSize: 25)
+//            v.addSubview(lb)
             
             // Adjust size
             x = v.frame.maxX
