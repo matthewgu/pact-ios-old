@@ -11,10 +11,11 @@ import Firebase
 import KeychainSwift
 import FirebaseAuth
 
-class HomeVC: UIViewController {
+class HomeVC: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var totalPointsLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
+    let pageControl = UIPageControl()
     
     var ref: FIRDatabaseReference!
     let uid = FIRAuth.auth()?.currentUser?.uid
@@ -41,10 +42,69 @@ class HomeVC: UIViewController {
         // fetch user project data
         fetchProject { (true) in
             print(self.projects.count)
-            self.addView()
+            //self.addView()
+        }
+        
+        self.initViews()
+    }
+    
+    private func initViews()
+    {
+        // Scroll View
+        let scrlv = UIScrollView()
+        scrlv.frame = CGRect(x: 0, y: view.frame.size.height - 300, width:  self.view.frame.size.width, height: CGFloat(300))
+        scrlv.bounces = true
+        scrlv.isPagingEnabled = true
+        scrlv.isScrollEnabled = true
+        scrlv.delegate = self
+        self.scrollView.addSubview(scrlv)
+        
+        var x = 0 as CGFloat
+        for i in 0..<5
+        {
+            // Base View
+            let v = UIView()
+            v.backgroundColor = getRandomColor()
+            v.frame = CGRect(x: x, y: 0, width: self.view.frame.size.width, height: CGFloat(300))
+            scrlv.addSubview(v)
+            
+            // Number label
+            let lb = UILabel()
+            lb.frame = v.bounds
+            lb.text = "\(i + 1)"
+            lb.textAlignment = .center
+            lb.font = UIFont.boldSystemFont(ofSize: 25)
+            v.addSubview(lb)
+            
+            // Adjust size
+            x = v.frame.maxX
+            scrlv.contentSize.width = x
+        }
+        
+        // PageControl
+        pageControl.frame = CGRect(x: 0, y: self.view.frame.size.height - 50, width: self.view.frame.size.width, height: 50)
+        pageControl.numberOfPages = 5
+        pageControl.currentPage = 0
+        self.view.addSubview(pageControl)
+    }
+    
+    // MARK: UIScrollViewDelegate
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
+    {
+        if fmod(scrollView.contentOffset.x, scrollView.frame.maxX) == 0
+        {
+            pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
         }
     }
     
+    // MARK: - Support
+    func getRandomColor() -> UIColor
+    {
+        let randomRed:CGFloat = CGFloat(drand48())
+        let randomGreen:CGFloat = CGFloat(drand48())
+        let randomBlue:CGFloat = CGFloat(drand48())
+        return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
+    }
     
     // add view
     func addView() {
