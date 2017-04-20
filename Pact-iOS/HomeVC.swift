@@ -53,7 +53,7 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
     private func initViews()
     {
         // Scroll View
-        scrlv.frame = CGRect(x: 0, y: view.frame.size.height - 380 - 64, width:  self.view.frame.size.width, height: CGFloat(380))
+        scrlv.frame = CGRect(x: 25, y: view.frame.size.height - 380 - 64, width:  self.view.frame.size.width - 50, height: CGFloat(380))
         scrlv.bounces = true
         scrlv.isPagingEnabled = true
         scrlv.isScrollEnabled = true
@@ -61,32 +61,23 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
         self.scrollView.addSubview(scrlv)
         
         var x = 0 as CGFloat
-        for _ in 0..<5
+        for i in 0..<5
         {
             // Base View
             let v = UIView()
             v.backgroundColor = getRandomColor()
-            v.frame = CGRect(x: x, y: 0, width: self.view.frame.size.width, height: CGFloat(380))
+            v.frame = CGRect(x: x, y: 0, width: self.scrlv.frame.size.width, height: CGFloat(380))
             scrlv.addSubview(v)
             
-            // Number label
-//            let lb = UILabel()
-//            lb.frame = v.bounds
-//            lb.text = "\(i + 1)"
-//            lb.textAlignment = .center
-//            lb.font = UIFont.boldSystemFont(ofSize: 25)
-//            v.addSubview(lb)
-        
-            
             // Project View
-            if let project = UINib(nibName: "Project", bundle: nil).instantiate(withOwner: self, options: nil).first as? ProjectView {
-                
-                project.contributeButton.layer.cornerRadius = 6
-                project.contributeButton.backgroundColor = UIColor.brown
-                v.addSubview(project)
-                
-                project.frame = CGRect(x: (v.frame.size.width/2)-150, y: (v.frame.size.height/2)-150, width: 300, height: 300)
-            }
+//            if let project = UINib(nibName: "Project", bundle: nil).instantiate(withOwner: self, options: nil).first as? ProjectView {
+//                
+//                project.contributeButton.layer.cornerRadius = 6
+//                project.contributeButton.backgroundColor = UIColor.brown
+//                v.addSubview(project)
+//                
+//                project.frame = CGRect(x: (v.frame.size.width/2)-150, y: (v.frame.size.height/2)-150, width: 300, height: 300)
+//            }
             
             // Adjust size
             x = v.frame.maxX
