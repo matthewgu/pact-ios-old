@@ -45,10 +45,9 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
         // fetch user project data
         fetchProject { (true) in
             print(self.projects.count)
+            self.initViews()
             //self.addView()
         }
-        
-        self.initViews()
     }
     
     private func initViews()
@@ -77,7 +76,8 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
                 project.contributeButton.layer.cornerRadius = 6
                 project.contributeButton.backgroundColor = UIColor.brown
                 v.addSubview(project)
-                
+                project.contributeButton.tag = i
+                project.contributeButton.addTarget(self, action: #selector(printHello), for: .touchUpInside)
                 project.frame = CGRect(x: 10, y: 10, width: (v.frame.size.width) - 20, height: (v.frame.size.width) - 20)
             }
             
@@ -85,6 +85,10 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
             x = v.frame.maxX
             scrlv.contentSize.width = x
         }
+    }
+    
+    func printHello(sender: UIButton) {
+        print("hello project view \(sender.tag)")
     }
     
     @IBAction func detectSwipe (_ sender: UISwipeGestureRecognizer) {
