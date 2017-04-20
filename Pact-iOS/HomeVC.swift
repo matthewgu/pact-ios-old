@@ -23,7 +23,7 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
     let uid = FIRAuth.auth()?.currentUser?.uid
     
     var projects = [Project]()
-    let MAX_PAGE = 4
+    var MAX_PAGE = 4
     let MIN_PAGE = 0
     var currentPage = 0
     
@@ -61,8 +61,11 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
         scrlv.clipsToBounds = false
         self.scrollView.addSubview(scrlv)
         
+        let projectArrCount = projects.count
+        MAX_PAGE = projectArrCount - 1
+        
         var x = 0 as CGFloat
-        for i in 0..<5
+        for i in 0..<projectArrCount
         {
             // Base View
             let v = UIView()
