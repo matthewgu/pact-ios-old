@@ -23,7 +23,6 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
     let uid = FIRAuth.auth()?.currentUser?.uid
     
     var projects = [Project]()
-    var projectViewArr = [ProjectView]()
     let MAX_PAGE = 4
     let MIN_PAGE = 0
     var currentPage = 0
@@ -38,9 +37,7 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
                                  action: #selector(refreshOptions(sender:)),
                                  for: .valueChanged)
         scrollView.refreshControl = refreshControl
-        
-        // add view
-        //addView()
+
         
         // fetch user current points
         fetchPoints()
@@ -82,15 +79,12 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
                 v.addSubview(project)
                 
                 project.frame = CGRect(x: 10, y: 10, width: (v.frame.size.width) - 20, height: (v.frame.size.width) - 20)
-                
-                projectViewArr.append(project)
             }
             
             // Adjust size
             x = v.frame.maxX
             scrlv.contentSize.width = x
         }
-        self.projectViewArr[self.currentPage].transform = CGAffineTransform.init(scaleX: 1.05, y: 1.05)
     }
     
     @IBAction func detectSwipe (_ sender: UISwipeGestureRecognizer) {
