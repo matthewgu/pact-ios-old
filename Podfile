@@ -9,6 +9,7 @@ target 'Pact-iOS' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
   pod 'KeychainSwift'
 
 end

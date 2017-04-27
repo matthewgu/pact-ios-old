@@ -16,8 +16,9 @@
             <rect key="frame" x="0.0" y="0.0" width="350" height="390"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="project-cover-image" translatesAutoresizingMaskIntoConstraints="NO" id="eMW-e5-OSP">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eMW-e5-OSP">
                     <rect key="frame" x="0.0" y="0.0" width="350" height="253.5"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4000 pts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Atc-qx-cpQ">
                     <rect key="frame" x="136" y="20" width="78" height="21.5"/>
@@ -96,13 +97,13 @@
             <connections>
                 <outlet property="contributeButton" destination="I19-Vf-PAZ" id="b3H-7k-Uch"/>
                 <outlet property="pointsLabel" destination="Atc-qx-cpQ" id="I21-x0-6h1"/>
+                <outlet property="projectCoverImage" destination="eMW-e5-OSP" id="nW4-2b-bwi"/>
                 <outlet property="projectTitle" destination="3xn-M8-mLK" id="4hP-pN-cSp"/>
             </connections>
             <point key="canvasLocation" x="22" y="-96"/>
         </view>
     </objects>
     <resources>
-        <image name="project-cover-image" width="355" height="259"/>
         <image name="telus" width="91" height="91"/>
     </resources>
 </document>
