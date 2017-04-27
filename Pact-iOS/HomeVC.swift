@@ -201,10 +201,10 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snapshot {
                     if let dict = snap.value as? [String: Any] {
-                        if let title = dict["title"] as? String, let pointsNeeded = dict["pointsNeeded"] as? String, let projectNameID = dict["projectNameID"] as? String, let projectContributeCount = dict["projectContributeCount"] as? String {
+                        if let title = dict["title"] as? String, let pointsNeeded = dict["pointsNeeded"] as? String, let projectNameID = dict["projectNameID"] as? String, let projectContributeCount = dict["projectContributeCount"] as? String, let coverImage = dict["coverImage"] as? String {
         
-                            let project = Project(title: title, pointsNeeded: pointsNeeded, projectNameID: projectNameID, projectContributeCount: projectContributeCount)
-                            print("points contribtue count: \(project.projectContributeCount!)")
+                            let project = Project(title: title, pointsNeeded: pointsNeeded, projectNameID: projectNameID, projectContributeCount: projectContributeCount, coverImage: coverImage)
+                            print("coverImage name: \(project.coverImage!)")
                             self.projects.append(project)
                         }
                     }

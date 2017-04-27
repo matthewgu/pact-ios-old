@@ -14,13 +14,13 @@ class Project {
     var pointsNeeded: String?
     var projectNameID: String?
     var projectContributeCount: String?
+    var coverImage: String?
     
-    init(title: String, pointsNeeded: String, projectNameID: String, projectContributeCount: String) {
+    init(title: String, pointsNeeded: String, projectNameID: String, projectContributeCount: String, coverImage: String) {
         self.title = title
         self.pointsNeeded = pointsNeeded
         self.projectNameID = projectNameID
         self.projectContributeCount = projectContributeCount
-        
-        
+        self.coverImage = coverImage        
     }
 }
