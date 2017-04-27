@@ -75,12 +75,9 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
             
             // Project View
             if let project = UINib(nibName: "Project", bundle: nil).instantiate(withOwner: self, options: nil).first as? ProjectView {
-                
-                project.contributeButton.layer.cornerRadius = 6
-                project.contributeButton.backgroundColor = UIColor.brown
+                let projectDetails: Project = projects[i]
+                project.updateProjectView(project: projectDetails)
                 v.addSubview(project)
-                project.contributeButton.tag = i
-                project.contributeButton.addTarget(self, action: #selector(printHello), for: .touchUpInside)
                 project.frame = CGRect(x: 10, y: 10, width: (v.frame.size.width) - 20, height: (v.frame.size.width) - 20)
             }
             

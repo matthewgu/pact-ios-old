@@ -20,6 +20,7 @@ class Project {
         self.pointsNeeded = pointsNeeded
         self.projectNameID = projectNameID
         self.projectContributeCount = projectContributeCount
+        
+        
     }
 }
-

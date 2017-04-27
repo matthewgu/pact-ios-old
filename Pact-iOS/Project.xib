@@ -96,6 +96,7 @@
             <connections>
                 <outlet property="contributeButton" destination="I19-Vf-PAZ" id="b3H-7k-Uch"/>
                 <outlet property="pointsLabel" destination="Atc-qx-cpQ" id="I21-x0-6h1"/>
+                <outlet property="projectTitle" destination="3xn-M8-mLK" id="4hP-pN-cSp"/>
             </connections>
             <point key="canvasLocation" x="22" y="-96"/>
         </view>
