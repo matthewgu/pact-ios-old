@@ -19,7 +19,5 @@ class EnableHealthKitVC: UIViewController {
     @IBAction func enableHealthKitBtnPressed(_ sender: Any) {
         performSegue(withIdentifier: "HomeSegue", sender: nil)
     }
-    
-    
 
 }

@@ -24,6 +24,8 @@ class ProjectView: UIView {
     
         let storage = FIRStorage.storage()
         let storageRef = storage.reference()
+        
+        //project cover image
         let imageName = project.coverImage
         let imageRef = storageRef.child(imageName!)
         
