@@ -283,26 +283,61 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
         }, withCancel: nil)
     }
     
-    func addPoints() {
+    func addPoints(steps: Int) {
         var currentPoints = Int()
         
-        if let currentPointsOptional = Int(totalPointsLabel.text ?? "0") {
+        if let currentPointsOptional = Int(totalPointsLabel.text!) {
             currentPoints = currentPointsOptional
         }
         
-        let currentPointsStr = "\(currentPoints + 1000)"
-        print(currentPointsStr)
+        let currentPointsStr = "\(currentPoints + steps)"
+        print("current points: \(currentPointsStr)")
         
         ref = FIRDatabase.database().reference()
         self.ref.child("users/\(uid!)/points").setValue(currentPointsStr)
     }
     
+    // MARK: - Data
+    func getStep()
+    {
+        // Check Authorization
+        HealthKitUtil.sharedInstance.checkAuthorization { (authorized) in
+            
+            if authorized
+            {
+                // Get step
+                HealthKitUtil.sharedInstance.getStep(completion: { (success, totalSteps) in
+                    if success
+                    {
+                        // Get past steps and new steps
+                        DispatchQueue.main.async {
+                            self.addPoints(steps: totalSteps)
+                            //print("total steps: " + "\(totalSteps)")
+                            //print("---------------------------------")
+                        }
+                    }
+                    else
+                    {
+                        DispatchQueue.main.async {
+                            print("Failed to get steps")
+                        }
+                    }
+                })
+            }
+            else
+            {
+                DispatchQueue.main.async {
+                    print("Not authorized")
+                }
+            }
+        }
+    }
+    
     // // MARK: - Pull to Refresh Action
     @objc private func refreshOptions(sender: UIRefreshControl) {
         sender.endRefreshing()
-        addPoints()
+        getStep()
         fetchPoints()
-        //totalPointsLabel.text = "10000"
     }
     
     //   Project View Height constraint based on device screen height
