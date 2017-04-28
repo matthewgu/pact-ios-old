@@ -14,26 +14,17 @@ class UserAccount
     private init() {} // Singleton
     
     private struct Key {
-        static let TotalStep = "UserAccount.TotalStep"
-        static let LastFetchedDataOfStep = "UserAccount.LastDataOfFetchStep"
+        static let FromDate = "UserAccount.fromDate"
     }
     
-    var totalStep: Int {
+    var fromDate: Double {
         get {
-            return StorageUtil.intForKey(key: Key.TotalStep)
+            return StorageUtil.doubleForKey(key: Key.FromDate)
         }
         set {
-            _ = StorageUtil.saveInt(int: newValue, key: Key.TotalStep)
-        }
-    }
-    
-    var LastFetchedDataOfStep: Double {
-        get {
-            return StorageUtil.doubleForKey(key: Key.LastFetchedDataOfStep)
-        }
-        set {
-            _ = StorageUtil.saveDouble(double: newValue, key: Key.LastFetchedDataOfStep)
+            _ = StorageUtil.saveDouble(double: newValue, key: Key.FromDate)
         }
     }
 }
+
 
