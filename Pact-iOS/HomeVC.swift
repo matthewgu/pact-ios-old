@@ -284,13 +284,13 @@ class HomeVC: UIViewController, UIScrollViewDelegate {
     }
     
     func addPoints(steps: Int) {
-        var currentPoints = Int()
+        //var currentPoints = Int()
         
-        if let currentPointsOptional = Int(totalPointsLabel.text!) {
-            currentPoints = currentPointsOptional
-        }
+//        if let currentPointsOptional = Int(totalPointsLabel.text!) {
+//            currentPoints = currentPointsOptional
+//        }
         
-        let currentPointsStr = "\(currentPoints + steps)"
+        let currentPointsStr = "\(steps)"
         print("current points: \(currentPointsStr)")
         
         ref = FIRDatabase.database().reference()
