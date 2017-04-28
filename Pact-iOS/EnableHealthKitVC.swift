@@ -17,7 +17,29 @@ class EnableHealthKitVC: UIViewController {
     }
     
     @IBAction func enableHealthKitBtnPressed(_ sender: Any) {
-        performSegue(withIdentifier: "HomeSegue", sender: nil)
+        getAuthorized()
+    }
+
+    func getAuthorized()
+    {
+        // Check Authorization
+        HealthKitUtil.sharedInstance.checkAuthorization { (authorized) in
+            
+            if authorized
+            {
+                DispatchQueue.main.async {
+                    print("Authorized")
+                    // Go to HomeVC
+                    self.performSegue(withIdentifier: "HomeSegue", sender: nil)
+                }
+            }
+            else
+            {
+                DispatchQueue.main.async {
+                    print("Not authorized")
+                }
+            }
+        }
     }
 
 }
